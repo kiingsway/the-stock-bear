@@ -4,14 +4,16 @@ interface Props {
   value: number
   onChange: (v: number) => void
   min?: number
+  max?: number
   accentColor: string
 }
 
-export default function Stepper({ value, onChange, min = 0, accentColor }: Props) {
+export default function Stepper({ value, onChange, min = 0, max = 99, accentColor }: Props) {
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: 0 }}>
       <button
         onClick={() => onChange(Math.max(min, value - 1))}
+        disabled={value <= 0}
         style={{
           width: 44,
           height: 44,
@@ -49,7 +51,8 @@ export default function Stepper({ value, onChange, min = 0, accentColor }: Props
         {value}
       </div>
       <button
-        onClick={() => onChange(value + 1)}
+        onClick={() => onChange(Math.min(max, value + 1))}
+        disabled={value >= max}
         style={{
           width: 44,
           height: 44,

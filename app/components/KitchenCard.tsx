@@ -2,6 +2,8 @@ import { IProduct } from "@/types"
 import { CheckCircleFilled } from '@ant-design/icons'
 import Stepper from "./Stepper"
 import { Typography } from "antd"
+import locations from "@/mocks/locations"
+import styles from './ProductCard/ProductCard.module.scss'
 
 const { Text } = Typography
 
@@ -12,6 +14,7 @@ interface Props {
 }
 
 export default function KitchenCard({ product, count, onCountChange }: Props) {
+  const location = locations.find(l => l.id === product.kLocationId)
   const needed = Math.max(0, product.par - count)
   const isComplete = needed === 0
 
@@ -27,19 +30,7 @@ export default function KitchenCard({ product, count, onCountChange }: Props) {
         overflow: 'hidden',
       }}
     >
-      {isComplete && (
-        <div
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: 4,
-            height: '100%',
-            background: '#4ade80',
-            borderRadius: '16px 0 0 16px',
-          }}
-        />
-      )}
+      {isComplete && <div className={styles.status_indicator} />}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 12 }}>
         <div>
           <Text
@@ -64,6 +55,7 @@ export default function KitchenCard({ product, count, onCountChange }: Props) {
           />
         ) : (
           <div
+            onClick={() => onCountChange(product.par)}
             style={{
               background: '#fef3c7',
               color: '#92400e',
@@ -74,7 +66,6 @@ export default function KitchenCard({ product, count, onCountChange }: Props) {
               fontFamily: "'DM Mono', monospace",
               cursor: 'pointer'
             }}
-            onClick={() => onCountChange(product.par)}
           >
             Need {needed}
           </div>
@@ -82,11 +73,12 @@ export default function KitchenCard({ product, count, onCountChange }: Props) {
       </div>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <Text style={{ fontSize: 13, color: '#64748b', fontFamily: "'DM Sans', sans-serif" }}>
-          In kitchen
+          {location?.title || `Unknown location (#${product.kLocationId})`}
         </Text>
         <Stepper
           value={count}
-          onChange={(v) => onCountChange(v)}
+          max={product.par}
+          onChange={onCountChange}
           accentColor="#6366f1"
         />
       </div>

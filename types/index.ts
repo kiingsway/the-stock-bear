@@ -1,3 +1,5 @@
+export type LocationNames = 'kitchen' | 'stock'
+
 export interface IProduct {
   id: number
   name: string;
@@ -9,5 +11,5 @@ export interface IProduct {
 export interface ILocation {
   id: number
   title: string
-  floor: 'kitchen' | 'stock'
+  floor: LocationNames
 }
