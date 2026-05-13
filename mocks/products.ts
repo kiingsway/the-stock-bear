@@ -30,8 +30,9 @@ const products: IProduct[] = [
   { id: 27, name: "Bleach", par: 1, kLocationId: 6, sLocationId: 10 },
   { id: 28, name: "Dish Soap", par: 1, kLocationId: 6, sLocationId: 10 },
   { id: 29, name: "Big Boss (Terminator)", par: 1, kLocationId: 6, sLocationId: 10 },
-  { id: 30, name: "Eggs Container Box", par: 3, kLocationId: 6, sLocationId: 9 },
-  { id: 31, name: "Sauce container", par: 6, kLocationId: 6, sLocationId: 9 }
+  { id: 30, name: "Scrub", par: 2, kLocationId: 6, sLocationId: 10 },
+  { id: 31, name: "Eggs Container Box", par: 3, kLocationId: 6, sLocationId: 9 },
+  { id: 32, name: "Sauce container", par: 6, kLocationId: 6, sLocationId: 9 }
 ]
 
 export default products
