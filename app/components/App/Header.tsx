@@ -1,10 +1,10 @@
-import { LocationNames } from '@/types';
+import { MainLocationNames } from '@/types';
 import { Switch } from 'antd';
 import { JSX } from 'react';
 
 interface Props {
   isKitchen: boolean
-  mode: LocationNames
+  mode: MainLocationNames
   onModeChange: (value: boolean) => void
 }
 

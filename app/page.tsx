@@ -3,7 +3,7 @@ import { JSX, useCallback, useEffect, useState } from 'react'
 import { ConfigProvider, theme } from 'antd'
 import products from '@/mocks/products'
 import { loadLS, saveLS } from '@/app/helpers/ls'
-import { LocationNames } from '@/types'
+import { MainLocationNames } from '@/types'
 import Footer from './components/App/Footer'
 import StatsBar from './components/App/StatsBar'
 import Header from './components/App/Header'
@@ -12,11 +12,8 @@ import ItemsList from './components/App/ItemsList'
 const LS_KITCHEN = 'sr_kitchenCount'
 const LS_PICKED = 'sr_picked'
 
-export type TTabs = 'count' | 'stock'
-
 export default function Home(): JSX.Element {
-  const [mode, setMode] = useState<LocationNames>('kitchen')
-  const [sortBy, setSortBy] = useState<LocationNames>('kitchen')
+  const [mode, setMode] = useState<MainLocationNames>('kitchen')
   const [kitchenCount, setKitchenCount] = useState<Record<number, number>>({})
   const [picked, setPicked] = useState<Record<number, number>>({})
 
@@ -44,7 +41,7 @@ export default function Home(): JSX.Element {
   }
 
   const sortedProducts = [...products].sort((a, b) =>
-    sortBy === 'kitchen'
+    mode === 'kitchen'
       ? a.kLocationId - b.kLocationId
       : a.sLocationId - b.sLocationId
   )
@@ -78,11 +75,7 @@ export default function Home(): JSX.Element {
         <Header
           isKitchen={isKitchen}
           mode={mode}
-          onModeChange={(v) => {
-            const local = v ? 'stock' : 'kitchen';
-            setMode(local);
-            setSortBy(local);
-          }}
+          onModeChange={(v) => setMode(v ? 'stock' : 'kitchen')}
         />
 
         {/* ── Stats bar ── */}

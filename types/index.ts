@@ -1,4 +1,4 @@
-export type LocationNames = 'kitchen' | 'stock'
+export type MainLocationNames = 'kitchen' | 'stock'
 
 export interface IProduct {
   id: number
@@ -11,5 +11,12 @@ export interface IProduct {
 export interface ILocation {
   id: number
   title: string
-  floor: LocationNames
+  floor: MainLocationNames
+}
+
+export interface ITask {
+  id: number
+  name: string
+  desc?: string
+  locationId?: number
 }
