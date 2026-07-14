@@ -1,3 +1,5 @@
+export type Modes = 'kitchen' | 'stock' | 'tasks'
+
 export type MainLocationNames = 'kitchen' | 'stock'
 
 export interface IProduct {

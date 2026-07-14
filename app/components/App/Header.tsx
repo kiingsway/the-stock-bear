@@ -1,20 +1,23 @@
-import { MainLocationNames } from '@/types';
-import { Switch } from 'antd';
+import { Modes } from '@/types';
+import { Segmented, Switch } from 'antd';
 import { JSX } from 'react';
+import Icon from '../Icon';
+import { BsBoxSeamFill, BsClipboardCheckFill } from 'react-icons/bs';
+import { FaKitchenSet } from 'react-icons/fa6';
+import { capitalize } from '@/app/helpers/formatters';
+import { getHeaderSubtitle, IAppAccent, MODE_COLORS } from '@/app/helpers/consts';
 
 interface Props {
-  isKitchen: boolean
-  mode: MainLocationNames
-  onModeChange: (value: boolean) => void
+  mode: Modes
+  accent: IAppAccent['gradient']
+  onModeChange: (mode: Modes) => void
 }
 
-export default function Header({ mode, isKitchen, onModeChange }: Props): JSX.Element {
+export default function Header({ mode, accent, onModeChange }: Props): JSX.Element {
   return (
     <div
       style={{
-        background: isKitchen
-          ? 'linear-gradient(135deg, #6366f1 0%, #4f46e5 100%)'
-          : 'linear-gradient(135deg, #f97316 0%, #ea580c 100%)',
+        background: accent,
         padding: '20px 20px 10px',
         transition: 'background 0.35s ease',
       }}
@@ -33,7 +36,7 @@ export default function Header({ mode, isKitchen, onModeChange }: Props): JSX.El
             Stock Refill
           </div>
           <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.7)', marginTop: 2 }}>
-            {isKitchen ? 'Count what is in the kitchen' : 'Record what you picked up'}
+            {getHeaderSubtitle(mode)}
           </div>
         </div>
 
@@ -49,13 +52,18 @@ export default function Header({ mode, isKitchen, onModeChange }: Props): JSX.El
             cursor: 'pointer', // Importante para o UX
           }}
         >
-          <span style={{ fontSize: 12, color: '#fff', fontWeight: 600 }}>
-            {isKitchen ? '🍳 Kitchen' : '📦 Stock'}
-          </span>
-          <Switch
-            checked={mode === 'stock'}
+          <Segmented
+            shape="round"
             onChange={onModeChange}
+            options={[
+              { value: 'kitchen', icon: <Icon><FaKitchenSet color={MODE_COLORS.kitchen.accent} /></Icon> },
+              { value: 'stock', icon: <Icon><BsBoxSeamFill color={MODE_COLORS.stock.accent} /></Icon> },
+              { value: 'tasks', icon: <Icon><BsClipboardCheckFill color={MODE_COLORS.tasks.accent} /></Icon> },
+            ]}
           />
+          <span style={{ fontSize: 12, color: '#fff', fontWeight: 600 }}>
+            {capitalize(mode)}
+          </span>
         </label>
       </div>
     </div>

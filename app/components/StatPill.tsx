@@ -1,13 +1,13 @@
 import { JSX } from "react"
 
-interface Props {
+export interface StatPillProps {
   label: string
   value: number
   total: number
   color: string
 }
 
-export default function StatPill({ label, value, total, color }: Props): JSX.Element {
+export default function StatPill({ label, value, total, color }: StatPillProps): JSX.Element {
   return (
     <div style={{ flex: 1 }}>
       <div

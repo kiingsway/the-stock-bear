@@ -1,4 +1,4 @@
-export function loadLS(key: string): Record<number, number> {
+export function loadLS(key: string): Record<number, any> {
   if (typeof window === 'undefined') return {}
   try {
     return JSON.parse(localStorage.getItem(key) || '{}')
@@ -7,6 +7,6 @@ export function loadLS(key: string): Record<number, number> {
   }
 }
 
-export function saveLS(key: string, val: Record<number, number>) {
+export function saveLS(key: string, val: Record<number, number | boolean>) {
   localStorage.setItem(key, JSON.stringify(val))
 }

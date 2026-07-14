@@ -46,7 +46,6 @@ export default function ProductCard(p: Props): JSX.Element {
         isComplete={isComplete}
         par={p.product.par}
         left={left}
-        // needed={p.needed}
         needed={0}
         onCountChange={p.onCountChange}
       />
@@ -56,7 +55,6 @@ export default function ProductCard(p: Props): JSX.Element {
           {location?.title || `Unknown location (#${p.product.kLocationId})`}
         </Text>
         <Stepper
-          // value={p?.count || 0}
           value={0}
           max={p.product.par}
           onChange={p.onCountChange}

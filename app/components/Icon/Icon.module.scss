@@ -1,0 +1,11 @@
+.segmentIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.segmentIcon svg {
+  display: block;
+  transform: translateY(2px);
+}

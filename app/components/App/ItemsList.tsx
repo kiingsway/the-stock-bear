@@ -1,17 +1,17 @@
 import { JSX } from 'react';
 import KitchenCard from '../KitchenCard';
 import StockCard from '../StockCard';
-import { IProduct } from '@/types';
+import { IProduct, Modes } from '@/types';
 
 interface Props {
   sortedProducts: IProduct[]
   kitchenCount: Record<number, number>
   picked: Record<number, number>
-  isKitchen: boolean
-  handleChange: (id: number, v: number, isKitchen: boolean) => void
+  mode: Exclude<Modes, 'tasks'>
+  handleChange: (id: number, v: number | boolean, mode: Modes) => void
 }
 
-export default function ItemsList({ handleChange, isKitchen, kitchenCount, picked, sortedProducts }: Props): JSX.Element {
+export default function ItemsList({ handleChange, kitchenCount, picked, sortedProducts, mode }: Props): JSX.Element {
   return (
     <div
       style={{
@@ -28,12 +28,12 @@ export default function ItemsList({ handleChange, isKitchen, kitchenCount, picke
         const needed = Math.max(0, product.par - count)
         const pickedVal = picked[product.id] ?? 0
 
-        return isKitchen ? (
+        return mode === 'kitchen' ? (
           <KitchenCard
             key={product.id}
             product={product}
             count={count}
-            onCountChange={v => handleChange(product.id, v, isKitchen)}
+            onCountChange={v => handleChange(product.id, v, mode)}
           />
         ) : (
           <StockCard
@@ -41,35 +41,9 @@ export default function ItemsList({ handleChange, isKitchen, kitchenCount, picke
             product={product}
             needed={needed}
             picked={pickedVal}
-            onPickedChange={v => handleChange(product.id, v, isKitchen)}
+            onPickedChange={v => handleChange(product.id, v, mode)}
           />
         )
-
-        // return (
-        //   <div key={product.id}>
-        //     <ProductCard
-        //       product={product}
-        //       count={count}
-        //       onCountChange={v => handleChange(product.id, v, isKitchen ? 'kitchen' : 'stock')}
-        //       needed={needed}
-        //       picked={pickedVal}
-        //       local={isKitchen ? 'kitchen' : 'stock'} />
-        //     {isKitchen ? (
-        //       <KitchenCard
-        //         product={product}
-        //         count={count}
-        //         onCountChange={v => handleKitchenChange(product.id, v)}
-        //       />
-        //     ) : (
-        //       <StockCard
-        //         product={product}
-        //         needed={needed}
-        //         picked={pickedVal}
-        //         onPickedChange={v => handlePickedChange(product.id, v)}
-        //       />
-        //     )}
-        //   </div>
-        // )
       })}
     </div>
   );
