@@ -1,11 +1,12 @@
 import { Modes } from '@/types';
-import { Segmented, Switch } from 'antd';
+import { Button, Popconfirm, Segmented, Switch } from 'antd';
 import { JSX } from 'react';
 import Icon from '../Icon';
 import { BsBoxSeamFill, BsClipboardCheckFill } from 'react-icons/bs';
 import { FaKitchenSet } from 'react-icons/fa6';
 import { capitalize } from '@/app/helpers/formatters';
 import { getHeaderSubtitle, IAppAccent, MODE_COLORS } from '@/app/helpers/consts';
+import { logout } from '@/app/actions/logout';
 
 interface Props {
   mode: Modes
@@ -37,6 +38,19 @@ export default function Header({ mode, accent, onModeChange }: Props): JSX.Eleme
           </div>
           <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.7)', marginTop: 2 }}>
             {getHeaderSubtitle(mode)}
+          </div>
+
+          <div style={{ marginTop: 2 }}>
+            <Popconfirm
+              title="Logout the app"
+              description="Are you sure you want to logout?"
+              onConfirm={logout}
+              // onCancel={cancel}
+              okText="Logout"
+              cancelText="Cancel"
+            >
+              <Button size='small' type='default' ghost>Logout</Button>
+            </Popconfirm>
           </div>
         </div>
 
