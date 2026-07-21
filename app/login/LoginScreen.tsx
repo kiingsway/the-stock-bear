@@ -4,6 +4,7 @@ import styles from "./LoginScreen.module.scss";
 import Image from 'next/image'
 import { loginWithPin } from "../actions/auth";
 import manifest from "../manifest";
+import { APP_ICONS, APP_NAME } from "../config/app";
 
 const GoogleIcon = () => (
   <svg className={styles.googleIcon} viewBox="0 0 48 48" aria-hidden="true">
@@ -53,6 +54,9 @@ export default function LoginScreen({
   const appManifest = manifest();
   const appName = appManifest.name;
   const appIcon = appManifest.icons?.[0].src
+  // const appIcon = '/public/icons/icon-192.png'
+
+  console.log('appManifest', appManifest);
 
   const isLocked = isSubmitting;
 
@@ -92,10 +96,10 @@ export default function LoginScreen({
     <div className={styles.screen}>
       <div className={styles.content}>
         <div className={styles.brand}>
-          {appIcon ?
+          {APP_ICONS ?
             <Image
-              src={appIcon}
-              alt={`${appName} icon`}
+              src={APP_ICONS.icon192}
+              alt={`${APP_NAME} icon`}
               width={192}
               height={192}
             />
