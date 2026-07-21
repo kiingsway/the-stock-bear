@@ -8,7 +8,6 @@ import Footer from './components/App/Footer'
 import StatsBar from './components/App/StatsBar'
 import Header from './components/App/Header'
 import ItemsList from './components/App/ItemsList'
-import Tasks from './components/Tasks'
 import { getAccentColor, LS_KEY } from './helpers/consts'
 
 export default function Home(): JSX.Element {
@@ -63,7 +62,6 @@ export default function Home(): JSX.Element {
       : a.sLocationId - b.sLocationId
   )
 
-  const isKitchen = mode === 'kitchen'
   const accentColor = getAccentColor(mode)
 
   return (
@@ -104,19 +102,14 @@ export default function Home(): JSX.Element {
           todo={todo}
         />
 
-        {mode !== 'tasks' ? (
-          <>
-            {/* ── List ── */}
-            <ItemsList
-              sortedProducts={sortedProducts}
-              kitchenCount={kitchenCount}
-              picked={picked}
-              mode={mode}
-              handleChange={handleChange} />
-          </>
-        ) : (
-          <Tasks todo={todo} onChange={handleChange} />
-        )}
+        {/* ── List ── */}
+        <ItemsList
+          sortedProducts={sortedProducts}
+          kitchenCount={kitchenCount}
+          picked={picked}
+          mode={mode}
+          todo={todo}
+          onChange={handleChange} />
 
         {/* ── Footer ── */}
         <Footer onResetCount={handleReset} />
