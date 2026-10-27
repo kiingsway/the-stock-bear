@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2FA39A"/>
+      <stop offset="1" stop-color="#1B5F66"/>
+    </linearGradient>
+    <linearGradient id="fur" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9A6440"/>
+      <stop offset="1" stop-color="#7A4A2C"/>
+    </linearGradient>
+    <clipPath id="icon">
+      <rect width="1024" height="1024" rx="228"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#icon)">
+    <!-- Fundo -->
+    <rect width="1024" height="1024" fill="url(#bg)"/>
+
+    <!-- Prateleira 1 (topo) -->
+    <rect x="390" y="96" width="150" height="134" rx="12" fill="#D9A066"/>
+    <rect x="390" y="150" width="150" height="20" fill="#B9824C"/>
+    <rect x="560" y="122" width="80" height="108" rx="12" fill="#E9573F"/>
+    <rect x="560" y="156" width="80" height="36" fill="#F6F1E7"/>
+    <rect x="648" y="122" width="80" height="108" rx="12" fill="#E9573F"/>
+    <rect x="648" y="156" width="80" height="36" fill="#F6F1E7"/>
+    <path d="M752 230 L755 120 Q812 96 869 120 L872 230 Z" fill="#EFE3CC"/>
+    <path d="M755 120 Q812 144 869 120" stroke="#C9B48E" stroke-width="9" fill="none"/>
+    <rect x="890" y="134" width="120" height="96" rx="10" fill="#E6B47A"/>
+    <rect x="890" y="172" width="120" height="16" fill="#C4905A"/>
+    <rect x="360" y="228" width="680" height="32" rx="8" fill="#C98B5A"/>
+    <rect x="360" y="256" width="680" height="12" fill="#9C6A42"/>
+
+    <!-- Prateleira 2 -->
+    <rect x="590" y="314" width="116" height="26" rx="7" fill="#F2C14E"/>
+    <rect x="580" y="334" width="136" height="96" rx="24" fill="#F7E3A8" opacity="0.9"/>
+    <rect x="604" y="358" width="88" height="42" rx="7" fill="#F2C14E"/>
+    <rect x="744" y="304" width="84" height="126" rx="14" fill="#5BBF6A"/>
+    <rect x="758" y="280" width="56" height="30" rx="7" fill="#3E9A4D"/>
+    <rect x="744" y="346" width="84" height="36" fill="#F6F1E7"/>
+    <rect x="852" y="320" width="150" height="110" rx="12" fill="#D9A066"/>
+    <rect x="852" y="364" width="150" height="18" fill="#B9824C"/>
+    <rect x="540" y="428" width="500" height="32" rx="8" fill="#C98B5A"/>
+    <rect x="540" y="456" width="500" height="12" fill="#9C6A42"/>
+
+    <!-- Prateleira 3 -->
+    <rect x="660" y="528" width="80" height="100" rx="12" fill="#4A90D9"/>
+    <rect x="660" y="558" width="80" height="34" fill="#F6F1E7"/>
+    <rect x="748" y="528" width="80" height="100" rx="12" fill="#4A90D9"/>
+    <rect x="748" y="558" width="80" height="34" fill="#F6F1E7"/>
+    <rect x="852" y="530" width="150" height="98" rx="12" fill="#E6B47A"/>
+    <rect x="852" y="568" width="150" height="16" fill="#C4905A"/>
+    <rect x="630" y="626" width="410" height="32" rx="8" fill="#C98B5A"/>
+    <rect x="630" y="654" width="410" height="12" fill="#9C6A42"/>
+
+    <!-- Corpo de lado -->
+    <ellipse cx="330" cy="930" rx="250" ry="260" fill="url(#fur)"/>
+    <ellipse cx="440" cy="930" rx="110" ry="170" fill="#D8B48A"/>
+
+    <!-- Prancheta -->
+    <g transform="rotate(12 560 860)">
+      <rect x="470" y="760" width="190" height="230" rx="16" fill="#B5793F"/>
+      <rect x="486" y="780" width="158" height="196" rx="8" fill="#FFFFFF"/>
+      <rect x="528" y="748" width="74" height="30" rx="8" fill="#7D8A93"/>
+      <path d="M502 822 l11 11 l20 -22" stroke="#2FA39A" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <rect x="546" y="818" width="76" height="11" rx="5" fill="#C9D3D8"/>
+      <path d="M502 868 l11 11 l20 -22" stroke="#2FA39A" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <rect x="546" y="864" width="64" height="11" rx="5" fill="#C9D3D8"/>
+      <rect x="504" y="906" width="26" height="26" rx="6" stroke="#C9D3D8" stroke-width="6" fill="none"/>
+      <rect x="546" y="914" width="70" height="11" rx="5" fill="#C9D3D8"/>
+    </g>
+
+    <!-- Braço segurando a prancheta -->
+    <path d="M330 780 Q420 830 500 870" stroke="#8A5634" stroke-width="88" stroke-linecap="round" fill="none"/>
+    <ellipse cx="512" cy="878" rx="48" ry="42" fill="#7A4A2C"/>
+
+    <!-- Cabeça de perfil, desenhada virada para a direita e inclinada para cima -->
+    <g transform="rotate(-28 340 640)">
+      <!-- Orelha -->
+      <circle cx="250" cy="490" r="56" fill="#8A5634"/>
+      <circle cx="250" cy="490" r="28" fill="#D8B48A"/>
+
+      <!-- Crânio e focinho com a mesma cor, formando uma silhueta única -->
+      <circle cx="340" cy="600" r="160" fill="#8F5A37"/>
+      <circle cx="458" cy="645" r="78" fill="#8F5A37"/>
+
+      <!-- Focinho claro e redondo -->
+      <circle cx="486" cy="650" r="58" fill="#E3C49C"/>
+
+      <!-- Nariz -->
+      <ellipse cx="532" cy="630" rx="22" ry="17" fill="#2B1A10"/>
+      <ellipse cx="527" cy="624" rx="6" ry="4" fill="#FFFFFF" opacity="0.6"/>
+
+      <!-- Boca sorrindo -->
+      <path d="M530 652 Q525 672 504 672" stroke="#2B1A10" stroke-width="7" stroke-linecap="round" fill="none"/>
+
+      <!-- Olho -->
+      <circle cx="428" cy="572" r="19" fill="#2B1A10"/>
+      <circle cx="434" cy="565" r="6" fill="#FFFFFF"/>
+
+      <!-- Bochecha -->
+      <ellipse cx="420" cy="630" rx="28" ry="17" fill="#F28C8C" opacity="0.55"/>
+
+      <!-- Chapéu de chef -->
+      <g transform="translate(18 0) rotate(-8 340 455)">
+        <path d="M262 460 L262 412 Q214 402 224 360 Q234 318 280 332 Q298 290 340 292 Q382 290 400 332 Q446 318 456 360 Q466 402 418 412 L418 460 Z" fill="#FFFFFF"/>
+        <rect x="256" y="442" width="168" height="36" rx="10" fill="#EDEDED"/>
+      </g>
+    </g>
+  </g>
+</svg>

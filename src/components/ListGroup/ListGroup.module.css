@@ -1,0 +1,40 @@
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4px;
+  font-size: var(--fs-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.title {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.count {
+  font-family: var(--font-geist-mono), monospace;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.allDone .count {
+  color: var(--accent);
+}
+
+.list {
+  list-style: none;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}

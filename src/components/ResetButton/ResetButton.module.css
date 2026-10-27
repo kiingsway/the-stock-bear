@@ -1,0 +1,55 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 32px;
+  border-radius: 999px;
+  color: var(--muted);
+  transition:
+    background 0.2s var(--ease),
+    color 0.2s var(--ease),
+    padding 0.2s var(--ease);
+}
+
+.icon {
+  min-width: 32px;
+  padding: 0 8px;
+}
+
+.wide {
+  width: 100%;
+  height: 36px;
+  background: var(--surface-2);
+  color: var(--text);
+  border-radius: var(--radius);
+}
+
+.text {
+  font-size: var(--fs-sm);
+  white-space: nowrap;
+  animation: fadeIn 0.2s var(--ease);
+}
+
+.armed {
+  background: rgba(233, 87, 63, 0.16);
+  color: var(--danger);
+  padding: 0 10px;
+}
+
+.armed svg {
+  animation: spin 0.5s var(--ease);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-4px);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(120deg);
+  }
+}

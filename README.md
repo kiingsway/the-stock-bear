@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# The Stock Bear
 
-## Getting Started
+<img src="public/icon.svg" alt="The Stock Bear icon" width="96" />
 
-First, run the development server:
+A small, dark, notepad-style restock checklist for a restaurant kitchen. Made for one-hand use on a phone and installable as a PWA.
+
+**Version 2.0.0**
+
+## How it works
+
+The app has three tabs:
+
+- **Kitchen**: everything that lives in the kitchen, grouped by station. Walk around, check what is missing and set how many of each item you need with `−` / `+`.
+- **Stock**: the same items grouped by where they are stored. Each one shows `picked / needed`. Tap `+` as you grab them, and the item completes when the numbers match (`2/2`). Items with nothing to grab (`0/0`) start out done.
+- **Tasks**: a simple checklist with an optional description and location.
+
+Kitchen and Stock share the same numbers: what you set in the kitchen is what you need to grab in stock. Completing an item (the round button) is separate from its numbers.
+
+### Settings
+
+- **Language**: English, Português, Français, Español, 한국어. The first visit follows the phone's language.
+- **Move done items to the end**, or keep them in place.
+- **Check button side** (left or right hand).
+- **Restore all lists**: resets the three tabs. The ↺ button in the header does the same with two taps.
+
+Progress and settings are saved in the browser (`localStorage`).
+
+## Editing the data
+
+There is no server. Locations, products and tasks live in `src/data/`:
+
+| File | Content |
+| --- | --- |
+| `src/data/locations.ts` | Kitchen and stock locations |
+| `src/data/products.ts` | Products and where they are in the kitchen and in stock |
+| `src/data/tasks.ts` | Task list |
+
+Lists are shown in **id order**: locations by id, items by id inside each location.
+
+> If you change what an existing id means, bump `STORAGE_KEY` in `src/store/store.ts` so old saved progress is not applied to the wrong item.
+
+## Stack
+
+Next.js 16 (App Router) · React 19 · TypeScript · CSS Modules · i18next / react-i18next
+
+## Scripts
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev     # development, http://localhost:3000
+npm run build   # production build
+npm start       # production server (npm start -- -p 3001 for another port)
+npm run lint
+npm run icons   # regenerate the PNG icons from public/icon.svg
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Testing on a phone
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Run `npm run dev` and open `http://<your PC's IP>:3000` on a phone connected to the same Wi-Fi. Local network IPs are allowed in `allowedDevOrigins` in `next.config.ts`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### PWA
 
-## Learn More
+The manifest is `src/app/manifest.ts`, the icons are generated from `public/icon.svg` and the service worker is `public/sw.js`. The service worker is only registered in production builds, and installing on a phone needs HTTPS.
 
-To learn more about Next.js, take a look at the following resources:
+## Project structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+src/
+  app/          layout, page, manifest, icons
+  components/   AppShell, ProductList, ProductRow, TaskList, SettingsSheet, …
+  data/         locations, products, tasks
+  i18n/         i18next setup and locales (en, pt, fr, es, ko)
+  store/        app state (useSyncExternalStore + localStorage)
+  types/        shared types
+```
